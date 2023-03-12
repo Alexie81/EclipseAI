@@ -7,8 +7,10 @@ import acc from './img/acc.png'
 import robot from './img/chat.jpg'
 import React, { useState } from 'react';
 import {Configuration, OpenAIApi} from "openai";
+import conf from './openai.js';
+let apiKey = conf();
 const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: apiKey
 });
 
 
