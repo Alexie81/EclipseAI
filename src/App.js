@@ -94,6 +94,7 @@ function App() {
 ))}
     
 </div>
+
 <nav>
     <a href="" className="active"><img  src={brain} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">EclipseAI - Home</span></a>
     <hr />

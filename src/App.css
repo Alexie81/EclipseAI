@@ -1,3 +1,44 @@
+/* WEBSITE */
+.web-body{
+  height: 100% !important;
+  width: 100% !important;
+  background-color: rgba(68, 70, 84, 1.0);
+  color: #fff !important;
+}
+
+.web-AppBar {
+  background-color: rgba(68, 70, 84, 1.0) !important;
+  color: #fff !important;
+}
+
+.web-startChat {
+  background-color: #ffffff70 !important;
+}
+
+.web-homeComponent{
+  height: 100% !important;
+}
+
+.web-homeTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+#root {
+  height: 100%;
+}
+
+
 ::-webkit-scrollbar{
   width: 10px;
   background-color: #ffffff6e;
@@ -214,7 +255,7 @@ nav a .tooltip::after {
   /* padding-top: 10px; */
   border: none;
   overflow-y: auto;
-  max-height: 57rem !important;
+  max-height: 50rem !important;
 }
 
 /* Style for each response element in the list */

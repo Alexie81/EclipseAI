@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route, Link, useRoutes } from "react-router-dom";
 import {Configuration, OpenAIApi} from "openai";
 import './index.css';
-import App from './App';
+import App from './App.js';
+import Home from './Home.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home /> } />
+        <Route path="/:app" element={<App />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
