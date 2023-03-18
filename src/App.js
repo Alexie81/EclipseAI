@@ -1,12 +1,38 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import brain from './img/brain.png'
 import me from './img/me.png'
+import home from './img/home.png'
 import setting from './img/setting.png'
 import acc from './img/acc.png'
+import star from './img/star.png'
 import robot from './img/chat.jpg'
 import React, { useState } from 'react';
 import {Configuration, OpenAIApi} from "openai";
+import AppBar from '@mui/material/AppBar';
+import Stack from '@mui/material/Stack';
+import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import StarsIcon from '@mui/icons-material/Stars';
+import Chip from '@mui/material/Chip';
+// import CssBaseline from '@mui/material/CssBaseline';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import conf from './openai.js';
 let apiKey = conf();
 const configuration = new Configuration({
@@ -51,7 +77,7 @@ function App() {
             // console.log(itemsg[itemsg.length - 1].text)
             // itemsg[itemsg.length - 1].text = text;
             // setItems([...copyArr])
-            // console.log(itemsg)
+             console.log(text)
             if(isImg){
                 let text1 = text;
                 text = `${text1}`;
@@ -71,9 +97,129 @@ function App() {
         }
     }
 
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (
+          event &&
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
+        }
+    
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+         
+        >
+            <Divider />
+            <List>
+              <ListItem key="home">
+                <img src={brain} height="20px" width="20px" style={{marginRight: "10px"}}></img>
+                <Typography>EclipseAI</Typography>
+              </ListItem>
+          </List>
+          <List>
+              <ListItem key="home">
+                <ListItemButton href="/">
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Home" />
+                </ListItemButton>
+              </ListItem>
+          </List>
+          <Divider />
+          <List>
+              <ListItem key="settings">
+                <ListItemButton href="/settings">
+                  <ListItemIcon>
+                    <SettingsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Settings" />
+                </ListItemButton>
+              </ListItem>
+          </List>
+          <Divider />
+          <List>
+              <ListItem key="account">
+                <ListItemButton href="/account">
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Account" />
+                </ListItemButton>
+              </ListItem>
+          </List>
+          <Divider /><Divider /><Divider /><Divider /><Divider />
+          <List>
+              <ListItem key="upgrade">
+                <ListItemButton href="/#pricing">
+                  
+                  <Chip variant="outlined" label="Upgrade to Pro" color="success" icon={<StarsIcon />} style={{marginLeft: 25}} onClick={() => {window.location.href = "/#pricing"}} />
+
+                  {/* <ListItemText primary="Upgrade to Pro" /> */}
+                  
+                </ListItemButton>
+              </ListItem>
+          </List>
+        </Box>
+      );
+
+    
+
   return (
+    
 <div className="body">
 
+<div className="mobile-nav">
+      {['left'].map((anchor) => (
+        <React.Fragment key={anchor} >
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" className='mobile-appbar'>
+                <Toolbar>
+                <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
+                    onClick={toggleDrawer(anchor, true)}
+                >
+                    <MenuIcon />
+                </IconButton>
+                    <img src={brain} height="30px" width="30px"></img>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: "10px" }}>
+                EclipseAI
+                </Typography>
+                </Toolbar>
+            </AppBar>
+            </Box>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+            
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
+        </React.Fragment>
+      ))}
+    </div>
+    
     
     
     {/* <script>
@@ -89,17 +235,20 @@ function App() {
     () => {},
     <div key={item.id} className={item.clases}>
         <img className="avatar-image" src={item.image} alt="avatar" style={{borderRadius: '20px'}}/>
-        <div id='promptLog' className="prompt-content">{!item.isImage ? item.text : void(0)}<img src={item.text} style={{display: !item.isImage ? 'none' : 'block'}} /></div>
+        <div id='promptLog' className="prompt-content">{!item.isImage ? item.text : void(0)}<img className='prompt_image' src={item.text} style={{display: !item.isImage ? 'none' : 'block'}} /></div>
     </div>
 ))}
     
 </div>
 
 <nav>
-    <a href="" className="active"><img  src={brain} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">EclipseAI - Home</span></a>
+    <a href="" className="active"><img  src={brain} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">EclipseAI - App</span></a>
     <hr />
+    <a href="/" className=""><img  src={home} height="70%" width="70%" style={{paddingLeft: 7, paddingTop: 5}}/><span className="tooltip">Home</span></a>
     <a href="" className=""><img  src={setting} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">Settings</span></a>
     <a href="" className=""><img  src={acc} height="100%" width="100%"/><span className="tooltip">My Account</span></a>
+    <hr />
+    <a href="/#pricing" className=""><img  src={star} height="70%" width="70%" style={{paddingLeft: 7, paddingTop: 5}}/><span className="tooltip">Upgrade to Pro</span></a>
 </nav>
 <div id="bottom-container">
     <div id="regenerate-button-container">

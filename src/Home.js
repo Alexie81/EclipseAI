@@ -74,6 +74,12 @@ const tiers = [
 ];
 
 function PricingContent() {
+  setTimeout(() => {
+  if(window.location.href.includes("#pricing")){
+    console.log("YES CONTAINS")
+    window.location.href="/#pricing"
+  }
+}, 100)
   return (
       <div className="web-body">
     <React.Fragment>
@@ -124,7 +130,9 @@ function PricingContent() {
         </Typography>
       </Container>
       {/* Hero unit */}
-      <Container id="pricing" className="web-pricing">
+      
+      <section id="pricing">
+      <Container className="web-pricing">
         <Container className="web-pricingWrapper">
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
@@ -210,6 +218,7 @@ function PricingContent() {
       </Container>
       </Container>
       </Container>
+      </section>
       {/* Footer */}
       <Container
         maxWidth="md"

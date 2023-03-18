@@ -27,7 +27,7 @@
 }
 
 
-
+/* APP */
 
 html {
   scroll-behavior: smooth;
@@ -254,10 +254,124 @@ nav a .tooltip::after {
 #response-list {
   /* padding-top: 10px; */
   border: none;
-  overflow-y: auto;
   max-height: 50rem !important;
+  overflow-y: scroll !important;
 }
 
+@media only screen and (max-width: 600px) and (max-height: 830px) {
+  nav {
+    display: none;
+  }
+  #bottom-container {
+    width: 90% !important;
+  }
+  .mobile-nav{
+    display: block !important;
+  }
+  #response-list {
+    /* padding-top: 10px; */
+    border: none;
+    max-height: 35rem !important;
+    overflow-y: scroll !important;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-height: 830px) and (max-height: 899px) {
+  nav {
+    display: none;
+  }
+  #bottom-container {
+    width: 90% !important;
+  }
+  .mobile-nav{
+    display: block !important;
+  }
+  #response-list {
+    /* padding-top: 10px; */
+    border: none;
+    max-height: 41rem !important;
+    overflow-y: scroll !important;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-height: 899px) and (max-height:930px) {
+  nav {
+    display: none;
+  }
+  #bottom-container {
+    width: 90% !important;
+  }
+  .mobile-nav{
+    display: block !important;
+  }
+  #response-list {
+    /* padding-top: 10px; */
+    border: none;
+    max-height: 45rem !important;
+    overflow-y: scroll !important;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1200px) and (min-height: 1050px) {
+  #response-list {
+    /* padding-top: 10px; */
+    border: none;
+    max-height: 60rem !important;
+    overflow-y: scroll !important;
+    margin-left: 72px;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) and (max-height: 1050px) {
+  #response-list {
+    /* padding-top: 10px; */
+    border: none;
+    max-height: 50rem !important;
+    overflow-y: scroll !important;
+    margin-left: 72px;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .mobile-nav{
+    display: none!important;
+  }
+}
+
+.mobile-appbar {
+  background-color: rgba(68, 70, 84, 1.0) !important;
+}
+.box_appbar{
+  background-color: #df3079 !important;
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  background-color: rgba(68, 70, 84, 1.0) !important;
+  color: #fff !important;
+}
+.css-cveggr-MuiListItemIcon-root {
+  color: #fff !important;
+}
 /* Style for each response element in the list */
 #response-list .response-container {
   margin-bottom: 10px;
