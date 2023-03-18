@@ -419,6 +419,7 @@ nav a .tooltip::after {
       max-width: 100%;
   }
 }
+
 #response-list .response-container .avatar-image {
   width: 30px;
   height: 30px;
