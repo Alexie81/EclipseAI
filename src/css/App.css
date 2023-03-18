@@ -384,7 +384,11 @@ nav a .tooltip::after {
   background-color: rgba(68, 70, 84, 1.0) !important;
   color: #fff !important;
 }
-.css-cveggr-MuiListItemIcon-root {
+.css-wf16b5 {
+  background-color: rgba(68, 70, 84, 1.0) !important;
+  color: #fff !important;
+}
+.MuiListItemIcon-root {
   color: #fff !important;
 }
 /* Style for each response element in the list */

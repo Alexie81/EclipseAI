@@ -95,6 +95,8 @@ function App() {
                 console.log(itemsg)
             }
         }
+
+        setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 250);
     }
 
     const [state, setState] = React.useState({
@@ -271,7 +273,7 @@ function App() {
     <div id="input-container">
         {/* <input type="file" id="whisper-file" accept=".mp3,.mp4,.mpeg,.mpga,.m4a,.wav,.webm" style="display:none;"> */}
             <div id="prompt-input" contentEditable onKeyPress={handleKeyPress}></div>
-            <button id="submit-button" onClick={(e)=>{e.preventDefault();addChatItem(false, document.getElementById('prompt-input').textContent, false); getGPTResult(document.getElementById('prompt-input').textContent); document.getElementById('prompt-input').textContent = ""; document.getElementById('prompt-input').contentEditable = 'false';}}></button>
+            <button id="submit-button" onClick={(e)=>{e.preventDefault();setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 250);addChatItem(false, document.getElementById('prompt-input').textContent, false); getGPTResult(document.getElementById('prompt-input').textContent); document.getElementById('prompt-input').textContent = ""; document.getElementById('prompt-input').contentEditable = 'false';}}></button>
     </div>
 </div>
 {/* <script src="./assets/js/highlight.min.js"></script>
