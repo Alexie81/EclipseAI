@@ -73,7 +73,7 @@ function App() {
             }
             setItems([...copyArr])
         } else {
-          setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 350);
+          setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 450);
             // const copyArr = [...items];
             // console.log(itemsg[itemsg.length - 1].text)
             // itemsg[itemsg.length - 1].text = text;
@@ -274,7 +274,7 @@ function App() {
     <div id="input-container">
         {/* <input type="file" id="whisper-file" accept=".mp3,.mp4,.mpeg,.mpga,.m4a,.wav,.webm" style="display:none;"> */}
             <div id="prompt-input" contentEditable onKeyPress={handleKeyPress}></div>
-            <button id="submit-button" onClick={(e)=>{e.preventDefault();setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 100);addChatItem(false, document.getElementById('prompt-input').textContent, false); getGPTResult(document.getElementById('prompt-input').textContent); document.getElementById('prompt-input').textContent = ""; document.getElementById('prompt-input').contentEditable = 'false';}}></button>
+            <button id="submit-button" onClick={(e)=>{e.preventDefault();setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 100);addChatItem(false, document.getElementById('prompt-input').textContent, false); getGPTResult(document.getElementById('prompt-input').textContent); document.getElementById('prompt-input').textContent = "bot is thinking..."; document.getElementById('prompt-input').contentEditable = 'false';}}></button>
     </div>
 </div>
 {/* <script src="./assets/js/highlight.min.js"></script>
@@ -288,6 +288,8 @@ function App() {
         // Send a 400 status code and a message indicating that the prompt is missing
         addChatItem(true, 'Prompt is missing in the request', false);
         document.getElementById('prompt-input').contentEditable = 'true';
+        document.getElementById('prompt-input').textContent = "";
+        document.getElementById('prompt-input').focus();
     } else{
 
         // Use the OpenAI SDK to create a completion
@@ -300,6 +302,8 @@ function App() {
             }).then((result)=>{
                 addChatItem(true, result.data.data[0].url, true);
                 document.getElementById('prompt-input').contentEditable = 'true';
+                document.getElementById('prompt-input').textContent = "";
+                document.getElementById('prompt-input').focus();
             })
             
         }
@@ -312,6 +316,8 @@ function App() {
             }).then((result) => {
                 addChatItem(true, result.data.choices[0]?.message?.content, false);
                 document.getElementById('prompt-input').contentEditable = 'true';
+                document.getElementById('prompt-input').textContent = "";
+                document.getElementById('prompt-input').focus();
             })
             
         }
@@ -323,6 +329,8 @@ function App() {
             // Send the generated text as the response
             addChatItem(true, completion.data.choices[0].text, false);
             document.getElementById('prompt-input').contentEditable = 'true';
+            document.getElementById('prompt-input').textContent = "";
+            document.getElementById('prompt-input').focus();
         })
   }
 }
