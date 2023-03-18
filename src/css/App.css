@@ -357,6 +357,21 @@ nav a .tooltip::after {
     display: none!important;
   }
 }
+@media only screen and (max-width: 600px) {
+  .mobile-nav{
+    display: block !important;
+  }
+  nav {
+    display: none !important;
+  }
+  #bottom-container {
+    width: 90% !important;
+  }
+  .prompt_image{
+    height: 250px;
+    width: 250px;
+  }
+}
 
 .mobile-appbar {
   background-color: rgba(68, 70, 84, 1.0) !important;
