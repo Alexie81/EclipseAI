@@ -73,6 +73,7 @@ function App() {
             }
             setItems([...copyArr])
         } else {
+          setTimeout(() => {document.getElementById("response-list").scrollTop = document.getElementById("response-list").scrollHeight}, 350);
             // const copyArr = [...items];
             // console.log(itemsg[itemsg.length - 1].text)
             // itemsg[itemsg.length - 1].text = text;
