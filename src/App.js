@@ -56,7 +56,7 @@ function App() {
         clases: 'response-container chatgpt-response',
         isImage: false
     }]);
-    const [model, setModel] = useState('chatgpt');
+    const [model, setModel] = useState(localStorage.getItem("currentModel") ? localStorage.getItem("currentModel") : "chatgpt");
     function addChatItem(isRobot, text, isImg) {
         if(!isRobot) {
             const copyArr = [...items];
@@ -261,9 +261,9 @@ function App() {
     </div>
     <div id="model-select-container">
         <label htmlFor="model-select">Select model:</label>
-        <select id="model-select" onChange={()=>{setModel(document.getElementById('model-select').value)}}>
+        <select id="model-select" value={model} onChange={()=>{localStorage.setItem("currentModel", document.getElementById('model-select').value);setModel(document.getElementById('model-select').value)}}>
             {/* (Improved version of chat bot and can understand as well as generate natural language or code) */}
-            <option value="chatgpt" val='selected'>EclipseAI</option>
+            <option value="chatgpt">EclipseAI</option>
             {/* (Understand and generate natural language ) */}
             <option value="gpt">EclipseAI - Natural Language</option>
             {/* <option value="codex">Codex (Understand and generate code, including translating natural language to code)</option> */}
