@@ -1,5 +1,5 @@
-- view last chat
-- real time local db (import, export, create, read, update and delete (CRUD))
 - make account login
+- real time local db (import, export, create, read, update and delete (CRUD))
 - settings (on/off last save etc)
+- view last chat
 - billing

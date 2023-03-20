@@ -249,7 +249,7 @@ function App() {
     <hr />
     <a href="/" className=""><img  src={home} height="70%" width="70%" style={{paddingLeft: 7, paddingTop: 5}}/><span className="tooltip">Home</span></a>
     <a href="" className=""><img  src={setting} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">Settings</span></a>
-    <a href="" className=""><img  src={acc} height="100%" width="100%"/><span className="tooltip">My Account</span></a>
+    <a href="/account" className=""><img  src={acc} height="100%" width="100%"/><span className="tooltip">My Account</span></a>
     <hr />
     <a href="/#pricing" className=""><img  src={star} height="70%" width="70%" style={{paddingLeft: 7, paddingTop: 5}}/><span className="tooltip">Upgrade to Pro</span></a>
 </nav>

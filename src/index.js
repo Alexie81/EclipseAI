@@ -5,7 +5,7 @@ import './index.css';
 import './css/404.css'
 import App from './App.js';
 import Home from './Home.js';
-import Nav from './Nav.js';
+import Account from './Account.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +16,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home /> } />
         <Route path="/app" element={<App />} />
+        <Route path="/account" element={<Account />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
