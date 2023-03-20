@@ -245,7 +245,7 @@ function App() {
 </div>
 
 <nav>
-    <a href="" className="active"><img  src={brain} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">EclipseAI - App</span></a>
+    <a className="active"><img  src={brain} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">EclipseAI - App</span></a>
     <hr />
     <a href="/" className=""><img  src={home} height="70%" width="70%" style={{paddingLeft: 7, paddingTop: 5}}/><span className="tooltip">Home</span></a>
     <a href="" className=""><img  src={setting} height="80%" width="80%" style={{borderRadius: '50%', padding: '5.1px'}}/><span className="tooltip">Settings</span></a>
