@@ -69,17 +69,11 @@ export default function Account() {
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      remember: data.get('remember')
-    });
-  };
+  
 
   let [page, setPage] = useState("signin");
+  let [textAlert, setTextAlert] = useState("");
+  let [alertStatus, setAlertStatus] = useState("");
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -112,6 +106,85 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
     setState({ ...state, [anchor]: open });
   };
+
+
+
+  const handleSubmitIn = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    let email = data.get('email');
+    let password = data.get('password');
+    let remember = data.get('remember');
+
+    if(email == "") {
+      setTextAlert("Please fill 'Email Address' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(password == "") {
+      setTextAlert("Please fill 'Password' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(email != "" || password != ""){
+
+
+        // LOGIN
+
+
+      setTextAlert("Login success!");
+      setAlertStatus("success");
+      handleClick();
+    }
+
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+      remember: data.get('remember')
+    });
+  };
+  const handleSubmitUp = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+    let email = data.get('email');
+    let password = data.get('password');
+    let firstName = data.get('firstName');
+    let lastName = data.get('lastName');
+    let subscribe = data.get('subscribe');
+
+    if(firstName == "") {
+      setTextAlert("Please fill 'First Name' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(lastName == "") {
+      setTextAlert("Please fill 'Last Name' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(email == ""){
+      setTextAlert("Please fill 'Email Address' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(password == ""){
+      setTextAlert("Please fill 'Password' input!");
+      setAlertStatus("error");
+      handleClick();
+    } else if(email != "" || password != "" || firstName != "" || lastName != ""){
+
+
+        // SIGNUP
+
+
+      setTextAlert("Login success!");
+      setAlertStatus("success");
+      handleClick();
+    }
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+      subscribe: data.get('subscribe')
+    });
+  };
+
+
 
   const list = (anchor) => (
     <Box
@@ -225,9 +298,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 </nav>
       <Container component="main" maxWidth="xs">
 
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
+      <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={alertStatus} sx={{ width: '100%' }}>
+          {textAlert}
         </Alert>
       </Snackbar>
 
@@ -261,7 +334,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmitIn} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -332,7 +405,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmitUp} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -380,6 +453,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
+                  name="subscribe"
                 />
               </Grid>
             </Grid>
