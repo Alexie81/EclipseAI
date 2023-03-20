@@ -1,5 +1,7 @@
-- make account login
-- real time local db (import, export, create, read, update and delete (CRUD))
-- settings (on/off last save etc)
-- view last chat
-- billing
+- finish account login (create db, make separate functions and add session in the localStorage if the remember me is on and if is null then you cand add in sessionStorage) - 22.03 finish
+- real time local db (import db, export db, create items, read items, update items and delete items (CRUD)) - 25.03 finish
+- my-account (if is logged show the name and email and the client can edit his detalils, and ofc he can logout from account) - 05.04 finish
+- settings (if(is logged) then on/off last chat, on/off last model bot, help, pricing, support etc) - 16.04 finish
+- view last chat if is in settings - 18.04 finish
+- billing - 25.04 finish
+- create mobile app - 30.04 finish

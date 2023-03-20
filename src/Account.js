@@ -54,7 +54,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" target="_blank" href="https://sitebrain-technologies.web.app/">
-        SiteBrain-Technologies
+        EclipseAI - SiteBrain-Technologies
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -62,7 +62,6 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
 
 export default function Account() {
   
